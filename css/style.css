@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p {
+    font-family: monospace;
+}
+
+.game-board {
+    width: 100%;
+    height: 550px;
+    border-bottom: 10px solid rgb(22, 80, 17);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#87CEEB, #E0F6FF);
+    display: flex;
+    justify-content: center;
+    filter: blur(4px);
+    -webkit-filter: blur(4px); 
+}
+
+.pipe {
+    position: absolute;
+    bottom: -20px;
+    width: 80px;
+    right: -80px;
+    animation: pipe-animation 1.5s linear;
+}
+
+.mario {
+    position: absolute;
+    width: 150px;
+    bottom: 0;
+    left: 10px;
+    visibility: hidden;
+}
+
+.jump {
+    animation: jump 500ms ease-out;
+}
+
+.clouds {
+    position: absolute;
+    top: 20px;
+    width: 400px;
+    animation: clouds-animation 20s linear;
+}
+
+.score {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1; /* Usado para manter o texto em cima das outras imagens */
+    font-size: xx-large;
+    font-weight: bold;
+    text-shadow: 2px 2px #ffffff;
+    visibility: hidden;
+}
+
+.gameover {
+    position: absolute;
+    top: 100px;
+    z-index: 1; /* Usado para manter o texto em cima das outras imagens */
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 2px 2px #ffffff;
+    visibility: hidden;
+}
+
+.startgame-background {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 550px;
+    display: flex;
+    justify-content: center;      
+}
+
+.startgame {
+    position: absolute;
+    font-size: xx-large;
+    animation: startgame-animation 3s infinite linear; 
+}
+
+.tutorial {
+    position: absolute;
+    bottom: 100px;
+    font-size: large;
+}
+
+#restart {
+    visibility: hidden;
+}
+
+@keyframes pipe-animation {
+    from {
+        right: -200px;
+    }
+
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes jump {
+    0% {
+        bottom: 0;
+    }
+
+    40% {
+        bottom: 180px;
+    }
+
+    60% {
+        bottom: 180px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+@keyframes clouds-animation {
+    from {
+        right: -400px;
+    }
+
+    to {
+        right: 110%;
+    }
+}
+
+@keyframes startgame-animation {
+    0% {
+        top: 50%;
+    }
+
+    15% {
+        top: 49.5%;
+    }
+
+    25% {
+        top: 49%;
+    }
+
+    50% {
+        top: 50%;
+    }
+
+    75% {
+        top: 51%;
+    }
+
+    85% {
+        top: 50.5%
+    }
+
+    100% {
+        top: 50%;
+    }
+}
