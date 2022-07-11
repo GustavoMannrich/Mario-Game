@@ -30,6 +30,8 @@ themeSound.loop= true;
 
 const jump = () => {
     isJumping = true;
+    
+    console.log(mario.classList);
     mario.classList.add('jump');
 
     jumpSound.pause();
@@ -39,11 +41,14 @@ const jump = () => {
     setTimeout(() => {
 
         mario.classList.remove('jump');
-        isJumping = false;
+        
+        // Seta a flag isJumping 10ms depois, pra corrigir um bug onde tocava o som do pulo, mas o mario não pulava
+        setTimeout(() => {
+            isJumping = false;
+        }, 10);
+    }, 450); // a animação dura 500ms mas aqui a gente ja remove o pulo um pouco antes pra ficar mais responsivo pro jogador
 
-    }, 500);
-
-    console.log('Pulou')
+    console.log('Pulou');
 };
 
 // cria uma imagem da nuvem 
