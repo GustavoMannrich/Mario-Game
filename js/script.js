@@ -16,6 +16,7 @@ var pipes_loop = undefined;
 var esperaDepoisCriaCano = undefined;
 var pipeSpawnSpeed = 2000; // 2s
 var canCreatePipe = true;
+var pipe_Speed_Up = undefined;
 
 // sounds
 const jumpSound = new Audio('./sounds/mario_jump.mp3');
@@ -30,8 +31,7 @@ themeSound.loop= true;
 
 const jump = () => {
     isJumping = true;
-    
-    console.log(mario.classList);
+
     mario.classList.add('jump');
 
     jumpSound.pause();
@@ -124,6 +124,14 @@ const startGame = () => {
 
     themeSound.play();
 
+    // começa o loop que faz os canos spawnarem mais rapidamente
+    pipe_Speed_Up = setInterval(() => {
+        if (pipeSpawnSpeed > 600) {
+            pipeSpawnSpeed -= 200; // diminui 0.2s
+            console.log('Pipe speed: ' + pipeSpawnSpeed);
+        }
+    }, 10000);
+
     gameStarted = true;
     console.log('Iniciou o jogo');
 }
@@ -166,18 +174,9 @@ const pontuar = () => {
     }, 500);
 }
 
-const pipe_Speed_Up = setInterval(() => {
-    if (pipeSpawnSpeed > 600) {
-        pipeSpawnSpeed -= 200; // diminui 0.2s
-        console.log('Pipe speed: ' + pipeSpawnSpeed);
-    }
-}, 10000);
-
 const randomSpeedVariation = () => {
     let num = Math.floor(Math.random() * ((pipeSpawnSpeed / 2) - 200)) + 1; // this will get a random number
     num *= Math.round(Math.random()) ? 1 : -1; // this will add minus sign in 50% of cases
-    
-    console.log(num);
     
     return num;
 }

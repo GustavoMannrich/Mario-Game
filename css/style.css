@@ -1,6 +1,6 @@
 body {
-    background-image: url("../images/background.jpg");
-    /*background-color: aqua;    */
+    background-image: url("../images/background.png");
+    background-size: cover;
 }
 
 * {
